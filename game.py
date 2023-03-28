@@ -26,7 +26,6 @@ class TOON:
 
 class Monster(TOON):
     def __init__(self, name, hp, power):
-        self.type_ = "몬스터"
         super().__init__(name, hp, power)
 
 class Player(TOON):
@@ -62,8 +61,6 @@ Wizard = Player("해리포터", 70, 40, 50)
 fire_dragon = Monster("불", 30, 30)
 ice_dragon = Monster("얼음", 30, 35)
 pkc_dragon = Monster("피카츄", 50, 40)
-
-Dragons = [fire_dragon, ice_dragon, pkc_dragon]
 
 # ===================================================
 
@@ -104,70 +101,72 @@ while True:
 
     # random.monster 호출
     # 몬스터는 fire, ice, pkc 랜덤지정
-    random_m = random.choice(Dragons)
-    print(f"{random_m} 속성 드래곤을 처치하십시오.")
+    Dragons = [fire_dragon, ice_dragon, pkc_dragon]
+    choice = random.choice(Dragons)
+    print(choice.name)
+    print(f"{choice.name} 속성 드래곤을 처치하십시오.")
     time.sleep(2)
 
     # show_status로 현재 상태 출력
-    if (random_m == "불"):
+    if (choice.name == "불"):
         Monster.show_status(fire_dragon)
         time.sleep(2)
 
-    elif (random_m == "얼음"):
+    elif (choice.name == "얼음"):
         Monster.show_status(ice_dragon)
         time.sleep(2)
-    elif (random_m == "피카츄"):
+    elif (choice.name == "피카츄"):
         Monster.show_status(pkc_dragon)
         time.sleep(2)
 
     else:
         continue
 
-turns = 0
-while A:
-
-        if turns % 2 == 0:
-            print(f"\n-------------<{ID}님 공격 시작>-----------")
-            # 플레이어 턴
-            # 플레이어 공격
-            if action == 1:
-                Muggle.attack()
-                Muggle.show_status()
-
-            elif action == 2:
-                Wizard.M_attack()
-                Wizard.show_status()
-
-            elif Player.show_status(hp == 0):
-                print("게임이 종료되었습니다.")
-
-            break
-
-
-
-        elif turns % 2 == 1:
-            print(f"\n-----< {random_m} 속성 드래곤 공격 시작 >------")
-
-            if (random_m == "불"):
-                fire_dragon.attack()
-                fire_dragon.show_status()
-
-
-            elif (random_m == "얼음"):
-                fire_dragon.attack()
-                ice_dragon.show_status()
-
-
-            elif (random_m == "피카츄"):
-                fire_dragon.attack()
-                pkc_dragon.show_status()
-
-    # turns += 1
-
-    # if Player.show_status(hp==0):
-    #     print("게임이 종료되었습니다.")
-    # else: Monster.show_status(hp==0):
-    #     print("게임이 종료되었습니다")
+# turns = 0
+# while A:
+#
+#         if turns % 2 == 0:
+#             print(f"\n-------------<{ID}님 공격 시작>-----------")
+#             # 플레이어 턴
+#             # 플레이어 공격
+#             if action == 1:
+#                 Muggle.attack()
+#                 Muggle.show_status()
+#
+#             elif action == 2:
+#                 Wizard.M_attack()
+#                 Wizard.show_status()
+#
+#             elif Player.show_status(hp == 0):
+#                 print("게임이 종료되었습니다.")
+#
+#             break
+#
+#
+#
+#         elif turns % 2 == 1:
+#             print(f"\n-----< {random_m} 속성 드래곤 공격 시작 >------")
+#
+#             if (random_m == "불"):
+#                 fire_dragon.attack()
+#                 fire_dragon.show_status()
+#
+#
+#             elif (random_m == "얼음"):
+#                 fire_dragon.attack()
+#                 ice_dragon.show_status()
+#
+#
+#             elif (random_m == "피카츄"):
+#                 fire_dragon.attack()
+#                 pkc_dragon.show_status()
+#
+#     # turns += 1
+#
+#     # if Player.show_status(hp==0):
+#     #     print("게임이 종료되었습니다.")
+#     # else: Monster.show_status(hp==0):
+#     #     print("게임이 종료되었습니다")
 
 
 
