@@ -28,6 +28,7 @@ class Monster(TOON):
     def __init__(self, name, hp, power):
         super().__init__(name, hp, power)
 
+
 class Player(TOON):
     def __init__(self, name, hp, power, m_power):
         self.name = name
@@ -73,6 +74,7 @@ ID = input("닉네임을 입력하세요: ")
 print(type(ID))
 
 while True:
+
     # 플레이어 공격 방법 선택
     # 1번을 입력받을 경우 일반
     # 2번을 입력받을 경우 마법
@@ -119,56 +121,55 @@ while True:
         Monster.show_status(pkc_dragon)
         time.sleep(2)
 
-    else:
-        continue
+    turns = 0
+    # turns = random.randrange(0, 2) # 홀, 짝으로 턴 변경
 
-# turns = 0
-# while A:
-#
-#         if turns % 2 == 0:
-#             print(f"\n-------------<{ID}님 공격 시작>-----------")
-#             # 플레이어 턴
-#             # 플레이어 공격
-#             if action == 1:
-#                 Muggle.attack()
-#                 Muggle.show_status()
-#
-#             elif action == 2:
-#                 Wizard.M_attack()
-#                 Wizard.show_status()
-#
-#             elif Player.show_status(hp == 0):
-#                 print("게임이 종료되었습니다.")
-#
-#             break
-#
-#
-#
-#         elif turns % 2 == 1:
-#             print(f"\n-----< {random_m} 속성 드래곤 공격 시작 >------")
-#
-#             if (random_m == "불"):
-#                 fire_dragon.attack()
-#                 fire_dragon.show_status()
-#
-#
-#             elif (random_m == "얼음"):
-#                 fire_dragon.attack()
-#                 ice_dragon.show_status()
-#
-#
-#             elif (random_m == "피카츄"):
-#                 fire_dragon.attack()
-#                 pkc_dragon.show_status()
-#
-#     # turns += 1
-#
-#     # if Player.show_status(hp==0):
-#     #     print("게임이 종료되었습니다.")
-#     # else: Monster.show_status(hp==0):
-#     #     print("게임이 종료되었습니다")
+    # =====================전투 시작=============================================
+    if turns % 2 == 0:
+        turns += 1
+        print(f"\n-------------<{ID}님 공격 시작>-----------")
+        time.sleep(5)
+        # 플레이어 턴
+        # 플레이어 공격
+        if action == 1:
+            Muggle.attack(choice)
+            Muggle.show_status()
+
+            if Muggle.hp <= 0:
+                print("게임이 종료되었습니다")
+
+        elif action == 2:
+            Wizard.M_attack(choice)
+            Wizard.show_status()
+
+            if Wizard.hp <= 0:
+                print("게임이 종료되었습니다")
+            #     break
+            #
+            # else:
+            #     continue
 
 
 
+    elif turns % 2 == 0:
+        turns += 1
+        print(f"\n-----< {choice.name} 속성 드래곤 공격 시작 >------")
+
+        if (choice.name == "불"):
+            fire_dragon.attack(action)
+            fire_dragon.show_status()
 
 
+        elif (choice.name == "얼음"):
+            fire_dragon.attack(action)
+            ice_dragon.show_status()
+
+
+        elif (choice.name == "피카츄"):
+            fire_dragon.attack(action)
+            pkc_dragon.show_status()
+
+        turns += 1
+
+    # else:
+    #     return print("플레이어 설정입니다")
